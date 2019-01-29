@@ -9,18 +9,17 @@ import { AppConfig } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public electronService: ElectronService,
-    private translate: TranslateService) {
+  constructor(private translate: TranslateService) {
 
     translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);
 
-    if (electronService.isElectron()) {
+    /*if (electronService.isElectron()) {
       console.log('Mode electron');
       console.log('Electron ipcRenderer', electronService.ipcRenderer);
       console.log('NodeJS childProcess', electronService.childProcess);
     } else {
       console.log('Mode web');
-    }
+    }*/
   }
 }
