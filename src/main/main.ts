@@ -1,12 +1,25 @@
 import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import configureStore from "../shared/store/configureStore";
+import {setRemindersEnabled} from "../shared/actions/settings";
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
 function createWindow() {
+
+  const store = configureStore({}, 'main');
+  store.subscribe(async () => {
+    console.log(store.getState());
+    // persist store changes
+    // TODO: should this be blocking / wait? _.throttle?
+    // await storage.set('state', global.state);
+  });
+
+  store.dispatch(setRemindersEnabled(true));
+  store.dispatch(setRemindersEnabled(false));
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
@@ -24,7 +37,7 @@ function createWindow() {
 
   if (serve) {
     require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/node_modules/electron`)
+      electron: require(`${__dirname}/../../node_modules/electron`)
     });
     win.loadURL('http://localhost:4200');
   } else {
