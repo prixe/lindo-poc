@@ -59,8 +59,8 @@
               "buildOptimizer": true,
               "fileReplacements": [
                 {
-                  "replace": "environments/environment.ts",
-                  "with": "environments/environment.prod.ts"
+                  "replace": "src/renderer/environments/environment.ts",
+                  "with": "src/renderer/environments/environment.prod.ts"
                 }
               ]
             }
@@ -89,21 +89,21 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "test.ts",
-            "polyfills": "polyfills-test.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "src/renderer/test.ts",
+            "polyfills": "src/renderer/polyfills-test.ts",
+            "tsConfig": "src/renderer/tsconfig.spec.json",
+            "karmaConfig": "src/renderer/karma.conf.js",
             "scripts": [],
             "styles": [
-              "styles.scss"
+              "src/renderer/styles.scss"
             ],
             "assets": [
-              "assets",
-              "favicon.ico",
-              "favicon.png",
-              "favicon.icns",
-              "favicon.256x256.png",
-              "favicon.512x512.png"
+              "src/renderer/assets",
+              "src/renderer/favicon.ico",
+              "src/renderer/favicon.png",
+              "src/renderer/favicon.icns",
+              "src/renderer/favicon.256x256.png",
+              "src/renderer/favicon.512x512.png"
             ]
           }
         },
@@ -111,8 +111,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json"
+              "src/renderer/tsconfig.app.json",
+              "src/renderer/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
