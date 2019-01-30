@@ -18,8 +18,8 @@ function createWindow() {
     // await storage.set('state', global.state);
   });
 
-  store.dispatch(setRemindersEnabled(true));
-  store.dispatch(setRemindersEnabled(false));
+  // store.dispatch(setRemindersEnabled(true));
+  // store.dispatch(setRemindersEnabled(false));
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;

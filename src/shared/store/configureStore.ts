@@ -27,9 +27,9 @@ export default function configureStore(initialState, scope = 'main') {
     promise,
   ];
 
-  if (!process.env.NODE_ENV) {
-    // middleware.push(logger);
-  }
+  /* if (!process.env.NODE_ENV) {
+    middleware.push(logger);
+  }*/
 
   if (scope === 'renderer') {
     middleware = [
@@ -57,11 +57,11 @@ export default function configureStore(initialState, scope = 'main') {
   const enhancer = compose<StoreEnhancerStoreCreator>(...enhanced);
   const store = createStore(rootReducer, initialState, enhancer);
 
-  if (!process.env.NODE_ENV && module['hot']) {
+  /* if (!process.env.NODE_ENV && module['hot']) {
     module['hot'].accept('../reducers', () => {
       store.replaceReducer(require('../reducers'));
     });
-  }
+  }*/
 
   if (scope === 'main') {
     replayActionMain(store);
