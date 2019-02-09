@@ -1,8 +1,7 @@
 import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-import configureStore from "../shared/store/configureStore";
-import {setRemindersEnabled} from "../shared/actions/settings";
+import configureStore from '../shared/store/configureStore';
 
 let win, serve;
 const args = process.argv.slice(1);
@@ -20,44 +19,45 @@ function createWindow() {
 
   // store.dispatch(setRemindersEnabled(true));
   // store.dispatch(setRemindersEnabled(false));
+  const size = screen.getPrimaryDisplay().workAreaSize;
 
-  const electronScreen = screen;
-  const size = electronScreen.getPrimaryDisplay().workAreaSize;
-
-  // Create the browser window.
-  win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  },);
-
-  if (serve) {
-    require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/../../node_modules/electron`)
+  const createBrowserWindow = () => {
+    // Create the browser window.
+    win = new BrowserWindow({
+      x: 0,
+      y: 0,
+      width: size.width,
+      height: size.height,
+      webPreferences: {
+        nodeIntegration: true
+      }
     });
-    win.loadURL('http://localhost:4200');
-  } else {
-    win.loadURL(url.format({
-      pathname: path.join(__dirname, 'dist/index.html'),
-      protocol: 'file:',
-      slashes: true
-    }));
-  }
 
-  win.webContents.openDevTools();
+    if (serve) {
+      require('electron-reload')(__dirname, {
+        electron: require(`${__dirname}/../../node_modules/electron`)
+      });
+      win.loadURL('http://localhost:4200');
+    } else {
+      win.loadURL(url.format({
+        pathname: path.join(__dirname, 'dist/index.html'),
+        protocol: 'file:',
+        slashes: true
+      }));
+    }
 
-  // Emitted when the window is closed.
-  win.on('closed', () => {
-    // Dereference the window object, usually you would store window
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null;
-  });
+    win.webContents.openDevTools();
 
+    // Emitted when the window is closed.
+    win.on('closed', () => {
+      // Dereference the window object, usually you would store window
+      // in an array if your app supports multi windows, this is the time
+      // when you should delete the corresponding element.
+      win = null;
+    });
+  };
+
+  createBrowserWindow();
 }
 
 try {

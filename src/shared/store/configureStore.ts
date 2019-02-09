@@ -1,7 +1,6 @@
 import {createStore, applyMiddleware, compose, StoreEnhancerStoreCreator} from 'redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
-import getRootReducer from '../reducers';
 import {
   forwardToMain,
   forwardToRenderer,
@@ -9,7 +8,8 @@ import {
   replayActionMain,
   replayActionRenderer,
 } from 'electron-redux';
-import {AppState} from "./store";
+import {AppState} from './store';
+import getRootReducer from './reducers';
 
 /**
  * @param  {Object} initialState

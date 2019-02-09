@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ElectronService } from './providers/electron.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
-import {NgRedux} from "@angular-redux/store";
-import configureStore from "../../shared/store/configureStore";
-import {setRemindersEnabled} from "../../shared/actions/settings";
+import { NgRedux } from '@angular-redux/store';
+import configureStore from '../../shared/store/configureStore';
+import { setRemindersEnabled } from '../../shared/store/settings/settings.action';
+import { AppState } from '../../shared/store/store';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import {setRemindersEnabled} from "../../shared/actions/settings";
 })
 export class AppComponent {
   constructor(private translate: TranslateService,
-              public store: NgRedux<any>) {
+              public store: NgRedux<AppState>) {
 
     translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);
@@ -21,6 +21,9 @@ export class AppComponent {
     store.provideStore(configureStore({}, 'renderer'));
 
     store.dispatch(setRemindersEnabled(false));
+    store.dispatch(setRemindersEnabled(true));
+
+   store.subscribe(() => console.log(store.getState()));
 
     /*if (electronService.isElectron()) {
       console.log('Mode electron');

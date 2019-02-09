@@ -43,7 +43,8 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typesafe-actions": "^3.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.12.3",
