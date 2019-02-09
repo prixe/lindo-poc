@@ -4,12 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-
 // NG Translate
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ElectronService } from './providers/electron.service';
@@ -18,7 +17,7 @@ import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import {NgReduxModule} from "@angular-redux/store";
+import { StoreModule } from './store/store.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,7 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgReduxModule,
+    StoreModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -48,4 +47,5 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [ElectronService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

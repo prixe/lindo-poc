@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
 import { NgRedux } from '@angular-redux/store';
-import configureStore from '../../shared/store/configureStore';
 import { setRemindersEnabled } from '../../shared/store/settings/settings.action';
 import { AppState } from '../../shared/store/store';
 
@@ -16,9 +15,6 @@ export class AppComponent {
               public store: NgRedux<AppState>) {
 
     translate.setDefaultLang('en');
-    console.log('AppConfig', AppConfig);
-
-    store.provideStore(configureStore({}, 'renderer'));
 
     store.dispatch(setRemindersEnabled(false));
     store.dispatch(setRemindersEnabled(true));
