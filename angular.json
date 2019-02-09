@@ -27,7 +27,9 @@
             "styles": [
               "src/renderer/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/systemjs/dist/system.js"
+            ]
           },
           "configurations": {
             "dev": {

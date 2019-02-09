@@ -9,9 +9,12 @@
 main.js
 src/**/*.js
 *.js.map
+.rpt2_cache
+/src/renderer/assets/plugins
 
 # dependencies
 /node_modules
+/plugins/**/node_modules
 
 # IDEs and editors
 /.idea
@@ -47,3 +50,4 @@ package-lock.json
 # System Files
 .DS_Store
 Thumbs.db
+/src/renderer/assets/plugins/
