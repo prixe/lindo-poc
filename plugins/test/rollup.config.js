@@ -6,7 +6,7 @@ import commonjs from 'rollup-plugin-commonjs';
 export default [{
   input: 'src/main.ts',
   output: {
-    file: '../../src/renderer/assets/plugins/plugin-a.bundle.js',
+    file: '../../src/renderer/assets/plugins/plugin-test.bundle.js',
     format: 'umd',
     name: 'plugin-a',
   },
