@@ -1,30 +1,15 @@
-import {createStore, applyMiddleware, compose, StoreEnhancerStoreCreator} from 'redux';
+import { applyMiddleware, compose, createStore, Store, StoreEnhancerStoreCreator } from 'redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
-import {
-  forwardToMain,
-  forwardToRenderer,
-  triggerAlias,
-  replayActionMain,
-  replayActionRenderer,
-} from 'electron-redux';
-import {AppState} from './store';
+import { forwardToMain, forwardToRenderer, replayActionMain, replayActionRenderer, triggerAlias, } from 'electron-redux';
+import { AppState } from './store';
 import getRootReducer from './reducers';
 
-/**
- * @param  {Object} initialState
- * @param  {String} [scope='main|renderer']
- * @return {Object} store
- */
-export default function configureStore(initialState, scope = 'main') {
+export default function configureStore(initialState: Partial<AppState>, scope: 'main' | 'renderer' = 'main'): Store {
   let middleware = [
     thunk,
     promise,
   ];
-
-  /* if (!process.env.NODE_ENV) {
-    middleware.push(logger);
-  }*/
 
   if (scope === 'renderer') {
     middleware = [
@@ -45,18 +30,9 @@ export default function configureStore(initialState, scope = 'main') {
     applyMiddleware(...middleware),
   ];
 
-  if (/*! process.env.NODE_ENV && */scope === 'renderer') {
-  }
-
   const rootReducer = getRootReducer(scope);
   const enhancer = compose<StoreEnhancerStoreCreator<AppState>>(...enhanced);
   const store = createStore(rootReducer, initialState, enhancer);
-
-  /* if (!process.env.NODE_ENV && module['hot']) {
-    module['hot'].accept('../reducers', () => {
-      store.replaceReducer(require('../reducers'));
-    });
-  }*/
 
   if (scope === 'main') {
     replayActionMain(store);
