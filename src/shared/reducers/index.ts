@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import settings from './settings';
+import settingsReducer from './settings';
 
 export default function getRootReducer(scope = 'main') {
   let reducers = {
-    settings
+    settings: settingsReducer
   };
 
   if (scope === 'renderer') {

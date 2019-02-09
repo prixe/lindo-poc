@@ -8,7 +8,16 @@ import {
   SET_GITHUB_ENABLED,
 } from '../actions/settings';
 
-const initialState = {
+export interface SettingsState {
+  remindersEnabled: boolean;
+  remindersFromTime: string;
+  remindersToTime: string;
+  remindersWeekdays: {[key: number]: boolean};
+  pomodoroEnabled: boolean;
+  githubEnabled: boolean;
+}
+
+const initialSettingsState: SettingsState = {
   remindersEnabled: true,
   remindersFromTime: '09:00',
   remindersToTime: '17:00',
@@ -25,7 +34,7 @@ const initialState = {
   githubEnabled: true,
 };
 
-export default function settings(state = initialState, action) {
+export default function settingsReducer(state = initialSettingsState, action) {
   switch (action.type) {
     case SET_REMINDERS_ENABLED: {
       return {

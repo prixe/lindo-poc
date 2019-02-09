@@ -1,7 +1,6 @@
 import {createStore, applyMiddleware, compose, StoreEnhancerStoreCreator} from 'redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
-import createLogger from 'redux-logger';
 import getRootReducer from '../reducers';
 import {
   forwardToMain,
@@ -10,6 +9,7 @@ import {
   replayActionMain,
   replayActionRenderer,
 } from 'electron-redux';
+import {AppState} from "./store";
 
 /**
  * @param  {Object} initialState
@@ -17,11 +17,6 @@ import {
  * @return {Object} store
  */
 export default function configureStore(initialState, scope = 'main') {
-  const logger = createLogger({
-    level: scope === 'main' ? undefined : 'info',
-    collapsed: true,
-  });
-
   let middleware = [
     thunk,
     promise,
@@ -54,7 +49,7 @@ export default function configureStore(initialState, scope = 'main') {
   }
 
   const rootReducer = getRootReducer(scope);
-  const enhancer = compose<StoreEnhancerStoreCreator>(...enhanced);
+  const enhancer = compose<StoreEnhancerStoreCreator<AppState>>(...enhanced);
   const store = createStore(rootReducer, initialState, enhancer);
 
   /* if (!process.env.NODE_ENV && module['hot']) {
