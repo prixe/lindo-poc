@@ -8,7 +8,7 @@ export default [{
   output: {
     file: '../../src/renderer/assets/plugins/plugin-test.bundle.js',
     format: 'umd',
-    name: 'plugin-a',
+    name: 'plugin-test',
   },
   plugins: [
     angular(),

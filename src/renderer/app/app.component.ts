@@ -1,4 +1,4 @@
-import { Compiler, Component, Injector, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Compiler, Component, Injector, ViewChild, ViewContainerRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NgRedux } from '@angular-redux/store';
 import { setRemindersEnabled } from '../../shared/store/settings/settings.action';
@@ -9,7 +9,7 @@ import { AppState } from '../../shared/store/store';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
   @ViewChild('content', {read: ViewContainerRef}) content: ViewContainerRef;
 
@@ -43,21 +43,21 @@ export class AppComponent {
     const module = await SystemJS.import('assets/plugins/plugin-test.bundle.js');
 
     const moduleFactory = await this._compiler
-      .compileModuleAsync<any>(module["PluginTestModule"]);
+      .compileModuleAsync<any>(module['PluginTestModule']);
 
     // resolve component factory
     const moduleRef = moduleFactory.create(this._injector);
 
-    //get the custom made provider name 'plugins'
-    const componentProvider = moduleRef.injector.get('plugins');
+    // get the custom made provider name 'plugins'
+    const componentProvider = moduleRef.injector.get<Array<Array<{ name: string, component: new() => void }>>>('plugins' as any);
 
-    //from plugins array load the component on position 0
+    const componentTest = componentProvider[0].find(c => c.name === 'plugin-test-component');
+
+    // from plugins array load the component on position 0
     const componentFactory = moduleRef.componentFactoryResolver
-      .resolveComponentFactory<any>(
-        componentProvider[0][0].component
-      );
+      .resolveComponentFactory<any>(componentTest.component);
 
     // compile component
-    var pluginComponent = this.content.createComponent(componentFactory);
+    const pluginComponent = this.content.createComponent(componentFactory);
   }
 }
