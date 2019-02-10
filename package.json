@@ -4,10 +4,9 @@
   "description": "POC Lindo",
   "homepage": "https://github.com/prixe/lindo",
   "author": {
-    "name": "Prixe",
+    "name": "Prixe"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "main": "dist/main/main.js",
   "private": false,
   "scripts": {
@@ -33,6 +32,7 @@
   },
   "dependencies": {
     "electron-redux": "^1.3.1",
+    "electron-updater": "^4.0.6",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0",
