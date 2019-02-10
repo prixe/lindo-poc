@@ -1,21 +1,15 @@
 {
-  "name": "angular-electron",
-  "version": "5.1.0",
-  "description": "Angular 7 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "name": "lindo",
+  "version": "1.0.0",
+  "description": "POC Lindo",
+  "homepage": "https://github.com/prixe/lindo",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Prixe",
   },
   "keywords": [
-    "angular",
-    "angular 7",
-    "electron",
-    "typescript",
-    "sass"
   ],
   "main": "dist/main/main.js",
-  "private": true,
+  "private": false,
   "scripts": {
     "postinstall": "npm run postinstall:electron && electron-builder install-app-deps",
     "postinstall:web": "node postinstall-web",
