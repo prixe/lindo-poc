@@ -1,7 +1,8 @@
 {
   "productName": "angular-electron",
   "directories": {
-    "output": "release/"
+    "output": "release/",
+    "buildResources": "build/"
   },
     "files": [
         "**/*",
@@ -20,19 +21,16 @@
         "!tslint.json"
     ],
   "win": {
-    "icon": "dist",
     "target": [
       "portable"
     ]
   },
   "mac": {
-    "icon": "dist",
     "target": [
       "dmg"
     ]
   },
   "linux": {
-    "icon": "dist",
     "target": [
       "AppImage"
     ]
