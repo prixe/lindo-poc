@@ -1,5 +1,12 @@
+## <small>1.0.2 (2019-02-11)</small>
+
+* Add nsis build ([c65c8fe](https://github.com/prixe/lindo-poc/commit/c65c8fe))
+
+
+
 ## <small>1.0.1 (2019-02-11)</small>
 
+* 1.0.1 ([8da1855](https://github.com/prixe/lindo-poc/commit/8da1855))
 * Add angular-redux ([a8f6852](https://github.com/prixe/lindo-poc/commit/a8f6852))
 * add auto updater ([3f1213b](https://github.com/prixe/lindo-poc/commit/3f1213b))
 * Better typed redux store ([0d38327](https://github.com/prixe/lindo-poc/commit/0d38327))
