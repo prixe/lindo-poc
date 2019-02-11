@@ -1,11 +1,17 @@
-import { app, BrowserWindow, screen } from 'electron';
+import {app, BrowserWindow, screen} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import * as log from 'electron-log';
+import {autoUpdater} from 'electron-updater';
 import configureStore from '../shared/store/configureStore';
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+
+log.transports.file.level = 'info';
+autoUpdater.logger = log;
+log.info('App starting...');
 
 function createWindow() {
 
@@ -66,6 +72,24 @@ try {
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   app.on('ready', createWindow);
+
+  app.on('ready', function () {
+    autoUpdater.checkForUpdatesAndNotify();
+  });
+
+
+  autoUpdater.on('checking-for-update', () => {
+    console.log('Checking for update...');
+  });
+  autoUpdater.on('update-available', (info) => {
+    console.log('Update available.', info);
+  });
+  autoUpdater.on('update-not-available', (info) => {
+    console.log('Update not available.', info);
+  });
+  autoUpdater.on('error', (err) => {
+    console.log('Error in auto-updater. ' + err);
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
