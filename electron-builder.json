@@ -22,7 +22,8 @@
     ],
   "win": {
     "target": [
-      "portable"
+      "portable",
+      "nsis"
     ]
   },
   "mac": {
