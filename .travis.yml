@@ -34,7 +34,9 @@ cache:
     - node_modules
     - $HOME/.cache/electron
     - $HOME/.cache/electron-builder
-
+install:
+  - npm set progress=false
+  - npm install
 script:
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
@@ -44,9 +46,9 @@ script:
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder:wine \
-        /bin/bash -c "npm run release:linux && npm run release:win"
+        /bin/bash -c "npm run electron:linux && npm run electron:windows"
     else
-      npm run release:mac
+      npm run electron:mac
     fi
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine
