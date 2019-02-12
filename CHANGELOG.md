@@ -1,5 +1,12 @@
+## <small>1.0.6 (2019-02-12)</small>
+
+* Update .travis.yml ([c0db696](https://github.com/prixe/lindo-poc/commit/c0db696))
+
+
+
 ## <small>1.0.5 (2019-02-12)</small>
 
+* 1.0.5 ([114b834](https://github.com/prixe/lindo-poc/commit/114b834))
 * Update package.json ([d316fd3](https://github.com/prixe/lindo-poc/commit/d316fd3))
 
 
