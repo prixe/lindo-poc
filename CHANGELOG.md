@@ -1,5 +1,18 @@
+## <small>1.0.3 (2019-02-12)</small>
+
+* Update .travis.yml ([88a1a4b](https://github.com/prixe/lindo-poc/commit/88a1a4b))
+* Update .travis.yml ([09fd025](https://github.com/prixe/lindo-poc/commit/09fd025))
+* Update .travis.yml ([25754f1](https://github.com/prixe/lindo-poc/commit/25754f1))
+* Update .travis.yml ([a2d18f7](https://github.com/prixe/lindo-poc/commit/a2d18f7))
+* Update .travis.yml ([82cdaa7](https://github.com/prixe/lindo-poc/commit/82cdaa7))
+* Update package.json ([e13ea92](https://github.com/prixe/lindo-poc/commit/e13ea92))
+* Update travis ([a065b34](https://github.com/prixe/lindo-poc/commit/a065b34))
+
+
+
 ## <small>1.0.2 (2019-02-11)</small>
 
+* 1.0.2 ([3f5a8b6](https://github.com/prixe/lindo-poc/commit/3f5a8b6))
 * Add nsis build ([c65c8fe](https://github.com/prixe/lindo-poc/commit/c65c8fe))
 
 
