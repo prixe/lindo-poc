@@ -1,5 +1,12 @@
+## <small>1.0.5 (2019-02-12)</small>
+
+* Update package.json ([d316fd3](https://github.com/prixe/lindo-poc/commit/d316fd3))
+
+
+
 ## <small>1.0.4 (2019-02-12)</small>
 
+* 1.0.4 ([f3925f0](https://github.com/prixe/lindo-poc/commit/f3925f0))
 * Update package.json ([fe6e968](https://github.com/prixe/lindo-poc/commit/fe6e968))
 * Update package.json ([eb44541](https://github.com/prixe/lindo-poc/commit/eb44541))
 
